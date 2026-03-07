@@ -32,8 +32,8 @@ print('Hi \'Python\'') # Fix1: Use escape character (backslash)
 print("Hi 'Python'") # Fix2: Mix single and double quotes
 
 # \\ - Backslash
-print("Path: C:\Users\Baraa") #Invalid
-print("Path: C:\\Users\\Baraa") 
+print("Path: C:\Users\Akash") #Invalid
+print("Path: C:\\Users\\Akash") # Fix: Use double backslashes
 
 # \n - New Line
 print("Message1")
@@ -86,3 +86,5 @@ discount = subtotal * 0.10
 print("Discount:", discount)
 final_total = subtotal - discount
 print("Final Total:", final_total)
+
+print("HI" + " Python")
