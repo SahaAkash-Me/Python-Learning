@@ -107,6 +107,10 @@ print(email != "")              # ➜ True
 email = ""
 print(email != "")              # ➜ False
 
+# ---------------------------------------
+# VIdentity Operators for None Checks
+# ---------------------------------------
+
 email = None
 print(email is not None and email != "")  # ➜ False
 
@@ -119,4 +123,4 @@ print(email is not None and email != "")  # ➜ False
 # 4. Username is a string, not None, and longer than 5 characters
 # 5. User is admin or moderator, and not banned or email verified
 
-
+# Solved In D:\Python\Python Challanges\1.# --- Python Challenges Logic ---.py
