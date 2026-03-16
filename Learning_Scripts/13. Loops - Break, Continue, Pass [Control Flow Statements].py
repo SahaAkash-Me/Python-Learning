@@ -1,4 +1,4 @@
-```python
+# python
 #==========================================================================
 # Break Statement
 #==========================================================================
@@ -250,3 +250,25 @@ else:
 # └───────────┴─────────────────────────────────────┴─────────────────────────┘
 
 #==========================================================================
+
+
+#                       TASK BELOW
+# Scan emails to block unsafe data from entering your system
+
+    emails = [
+        'john.doe@yahoo.com',
+        'sarah.smith@hotmail.co.uk',
+        "'; DELETE FROM customers; --",
+        'mike.wilson@outlook.com',
+        'anna.jones@aol.com',
+        'Robert"); DROP TABLE Students;--',
+        'peter.parker@protonmail.com',
+        'lisa.brown@icloud.com',
+        '1; DROP TABLE Users;',
+        'david.miller@gmx.de'
+    ]
+    for email in emails:
+        if ';'in email:
+            print("SQL Injection : Hacker Attack")
+            break
+        print(f"Processing Emails: {email}")
