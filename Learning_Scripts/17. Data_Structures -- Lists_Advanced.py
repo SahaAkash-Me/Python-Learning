@@ -21,6 +21,12 @@
 # ║  🚦  SECTION 4 — Filter                                 ║
 # ║      🚦  filter()    →  keeps only items that pass      ║
 # ║      🔤  str.isalpha →  keeps only alphabetic items     ║
+# ╠══════════════════════════════════════════════════════════╣
+# ║  ⚡  SECTION 5 — Lambda                                 ║
+# ║      ⚡  lambda       →  anonymous one-line function     ║
+# ║      🗺️  map+lambda  →  transform every item            ║
+# ║      🚦  filter+lambda→  keep items that pass           ║
+# ║      🔃  sorted+lambda→  sort by custom key             ║
 # ╚══════════════════════════════════════════════════════════╝
 
 
@@ -270,3 +276,88 @@ print(list(filter(str.isalpha, items))) # 🔤 Keeps only items made of letters 
 items = ['sql', '123', 'python', '42']
 for i in filter(str.isalpha, items):   # 🔤 Same but iterating directly — no list conversion needed
     print(i)
+
+
+# ╔══════════════════════════════════════════════════════════╗
+# ║  ⚡  SECTION 5 — Lambda                                 ║
+# ╚══════════════════════════════════════════════════════════╝
+
+# ⚡ NORMAL FUNCTION - defined with 'def', has a name, can have multiple lines
+# ⚡ LAMBDA FUNCTION - anonymous, one line only, automatically returns
+# Key differences:
+# - No 'def' or 'return' keywords
+# - Can only contain a single expression
+# - Often used as a short, throwaway function
+# - Still can be assigned to a variable (making it "named" technically)
+
+multiply = lambda x: x * 2             # ⚡ lambda x  → takes one argument, returns x * 2
+print(multiply(2))
+
+add = lambda x, y: x + y               # ⚡ lambda x, y → takes two arguments, returns their sum
+print(add(1, 2))
+
+# NOTE
+# A lambda can contain any expression, including conditions
+
+check = lambda i: i in "python"        # ⚡ Returns True if character exists in the string "python"
+print(check('n'))                      # ✅ True  — 'n' is in "python"
+print(check('z'))                      # ❌ False — 'z' is not in "python"
+
+# - - - - - - - - - - - - - - - - - - - - - - 
+# 🗺️ Lambda + Map
+# map() applies the lambda to every item — lambda replaces the need for a named function
+# - - - - - - - - - - - - - - - - - - - - - - 
+prices = ['$12.50', '$9.99', '$100.00']
+
+# Using map with lambda to clean all prices
+cleaned_prices = list(map(lambda p: float(p.replace('$', '').strip()), prices))  # 🗺️ Strips '$' and converts to float
+print(cleaned_prices)  # [12.5, 9.99, 100.0]
+
+# Alternative using list comprehension
+cleaned_prices = [float(p.replace('$', '').strip()) for p in prices]   # 📋 Same result, different style
+print(cleaned_prices)  # [12.5, 9.99, 100.0]
+
+prices = ['$12.50', '$9.99', '$100.00']
+print(list(map(lambda p: float(p.replace('$', '')), prices)))
+
+
+#map(lambda p: float(p.replace('$', '')), prices)
+#             ^                            ^
+#             |                            |
+#             expression ends here         map ends here 
+
+# - - - - - - - - - - - - - - - - - - - - - - 
+# 🚦 Lambda + Filter
+# filter() keeps only items where the lambda returns True
+# - - - - - - - - - - - - - - - - - - - - - - 
+
+prices = [120, 30, 300, 80]
+print(list(filter(lambda p: p >=100, prices)))  # 🚦 Keeps only prices >= 100 → [120, 300]
+
+
+students = [['Maria', 85],
+            ['Kumar', 90],
+            ['Max', 60]]
+
+print(list(filter(lambda row: row[1] > 70, students)))  # 🚦 Keeps only students with score > 70
+
+# - - - - - - - - - - - - - - - - - - - - - - 
+# 🔃 Lambda + Sorted
+# sorted() sorts items — lambda tells it WHAT to sort by (the key)
+# - - - - - - - - - - - - - - - - - - - - - - 
+
+students = [['Maria', 85],
+            ['Kumar', 90],
+            ['Max', 60]]
+
+# Task : Students Only With M
+
+students = [['Maria', 85],
+            ['Kumar', 90],
+            ['Max', 60]]
+
+print(students[0][0].startswith('M'))   # ✅ True  — 'Maria' starts with 'M'
+print(students[1][0].startswith('M'))   # ❌ False — 'Kumar' does not
+print(students[2][0].startswith('M'))   # ✅ True  — 'Max' starts with 'M'
+
+print(list(filter(lambda row: row[0].startswith('M'), students)))  # 🚦 Keeps only students whose name starts with 'M'
