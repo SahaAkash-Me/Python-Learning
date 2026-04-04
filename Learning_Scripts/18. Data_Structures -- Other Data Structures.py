@@ -650,3 +650,29 @@ config = {
     }
 }
 print(config['database']['host'])
+
+# ================================================
+# ================================================
+
+# LIST - flexible
+fruits = ["apple", "banana", "apple"]   # duplicates ok
+fruits[1] = "mango"                     # mutable
+
+# TUPLE - frozen
+coords = (10.5, 20.8)                   # cannot change
+# coords[0] = 15   ← This would raise error
+
+# SET - unique & fast
+unique_ids = {101, 102, 101}            # becomes {101, 102}
+# print(unique_ids[0]) ← No index allowed
+
+# DICTIONARY - key-value mapping
+student = {
+    "name": "Akash",
+    "city": "Kolkata",
+    "marks": [95, 87, 92]
+}
+print(student["city"])   # access by key
+
+# ================================================
+# ================================================
